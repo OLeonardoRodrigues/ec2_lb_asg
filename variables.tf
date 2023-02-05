@@ -1,24 +1,38 @@
 variable "aws_region" {
-  description = "Define what region the instance will be deployed"
-  default     = "us-east-1"
+  description = "(Optional) Define what region the instance will be deployed"
+
+  type    = string
+  default = "us-east-1"
 }
 
 variable "instance_type" {
-  description = "AWS Instance type defines the hardware configuration of the machine"
-  default     = "t2.micro"
+  description = "(Optional) AWS Instance type defines the hardware configuration of the machine."
+
+  type     = string
+  nullable = false
+  default  = "t2.micro"
 }
 
 variable "instance_ami" {
-  type        = string
-  description = ""
-  default     = "ami-0ca7a41b0cf690c29"
+  description = "(Optional) Instance's AMI."
+
+  type     = string
+  nullable = false
+  default  = "ami-0ca7a41b0cf690c29"
 }
 
 variable "name" {
-  description = "Name of the application"
-  default     = "server-nginx"
+  description = "(Optional) Name of the application."
+
+  type     = string
+  nullable = false
+  default  = "server-nginx"
 }
 
 variable "template_key_name" {
-  default = "carlos_daniel"
+  description = "(Optional) Name of the template key."
+
+  type     = string
+  nullable = false
+  default  = "carlos_daniel"
 }

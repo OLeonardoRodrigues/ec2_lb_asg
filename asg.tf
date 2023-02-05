@@ -15,7 +15,6 @@ resource "aws_launch_template" "template" {
   }
 }
 
-
 resource "aws_autoscaling_group" "as_group" {
   name                      = "terraform-autoscaling"
   vpc_zone_identifier       = [aws_subnet.sub["pub_a"].id, aws_subnet.sub["pub_b"].id]
@@ -31,7 +30,6 @@ resource "aws_autoscaling_group" "as_group" {
     version = "$Latest"
   }
 }
-
 
 resource "aws_autoscaling_policy" "scaleup" {
   name                   = "Scale Up"

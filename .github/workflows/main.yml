@@ -22,17 +22,14 @@ jobs:
       - name: Terraform Init
         run: terraform init -backend=true -backend-config="config/dev/backend.hcl"
 
-      - name: Terraform Format
-        run: terraform fmt
-      
-      - name: Terraform Validate
-        run: terraform validate
-      
       - name: Terraform Plan
-        run: terraform plan
-      
+        run: terraform plan -no-color -compact-warnings -out=tfplan
+
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: terraform apply -no-color -compact-warnings -input=false tfplan
+
+      - name: Terraform Plan
+        run: terraform plan -no-color -compact-warnings -destroy -out=destroyplan
 
       - name: Terraform Destroy
-        run: terraform destroy -auto-approve
+        run: terraform apply -no-color -compact-warnings -input=false -destroy tfplan
